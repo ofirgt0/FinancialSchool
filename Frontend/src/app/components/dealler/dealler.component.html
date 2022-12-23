@@ -1,0 +1,36 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="container">
+   <div class="row">
+      <div class="col-md-12">
+         <div id="content" class="content content-full-width">
+            
+            <div class="profile">
+               <div class="profile-header">
+                  <div class="profile-header-cover"></div>
+                  <div class="profile-header-content telegramColor">
+                    <img src="assets/deallerAvatar/{{dealler.name}}.png" class="shadow rounded-circle profilePic center" width="10%">
+                     <div class="profile-header-info">
+                        <h4 class="m-t-10 m-b-5 center" >{{dealler.id}} | {{dealler.name}}</h4>
+                        <p class="m-b-10 center" style="font-size: 200%;">{{dealler.currMoney | currency }}</p>
+                     </div>
+                  </div>
+                  <ul class="profile-header-tab nav nav-tabs">
+                     <li class="nav-item"><a class=" active show" (click)="showDeals(true)" data-toggle="tab">Purchase History</a></li>
+                     <li class="nav-item"><a class="show pointer" (click)="showDeals(false)" data-toggle="tab">Holdings</a></li>
+                  </ul>
+               </div>
+            </div>
+
+            <div class="profile-content">
+               <div class="tab-content p-0" *ngIf="historyView">
+                  <app-deals-view></app-deals-view>
+               </div>
+               <div class="tab-content p-0" *ngIf="!historyView">
+                  <app-holdings-view></app-holdings-view>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
