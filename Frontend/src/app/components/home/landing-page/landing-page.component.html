@@ -1,0 +1,52 @@
+<!-- ======= Hero Section ======= -->
+<section id="hero" dir="rtl">
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center header-transparent">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div id="logo">
+        <h1><a href="index.html">בית הספר החברתי</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a> -->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">כיתות</a></li>
+          <li><a class="nav-link scrollto" href="#about">פרסים</a></li>
+          <li>
+            <a class="nav-link scrollto" (click)="onTeacherLogin()"
+              >התחברות מורים</a
+            >
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+      <!-- .navbar -->
+    </div>
+  </header>
+  <!-- End Header -->
+  <div class="hero-text" data-aos="zoom-out">
+    <h2>ברוכים הבאים לבית הספר החברתי</h2>
+    <p>כאן תוכלו ללמוד לקבל כלים חברתיים, חינוך פיננסי ועוד...</p>
+    <a href="#about" class="btn-get-started scrollto">Get Started</a>
+  </div>
+
+  <div class="product-screens">
+    <div class="product-screen-1" data-aos="fade-up" data-aos-delay="400">
+      <img src="assets/img/product-screen-1.png" alt="" />
+    </div>
+
+    <div class="product-screen-2" data-aos="fade-up" data-aos-delay="200">
+      <img src="assets/img/product-screen-2.png" alt="" />
+    </div>
+
+    <div class="product-screen-3" data-aos="fade-up">
+      <img src="assets/img/product-screen-3.png" alt="" />
+    </div>
+  </div>
+</section>
+<!-- End Hero Section -->
+
+<app-classes></app-classes>
+
+<app-products></app-products>

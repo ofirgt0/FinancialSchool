@@ -2,9 +2,8 @@
     <div *ngIf="!isAuth">
         <div class="input-group mb-3" style="width: 30%; float: right;margin-top: 0.5%;">
             <div class="input-group-prepend">
-                <button (click)="deallerLoginAsync(deallerId.value)" class="button-67" >Login</button>
+                <button (click)="onTeacherLogin()" class="button-67" >Login / Register</button>
             </div>
-            <input type="text" placeholder="Enter Dealler ID..." class="form-control" #deallerId >
         </div>
     </div>
       
@@ -28,5 +27,3 @@
         </div>
     </nav>
 </div>
- 
-

@@ -21,10 +21,10 @@ export class DeallerComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {    
-    await this.dataContainer.getLogedDealler().subscribe(resDealler=>{this.dealler=resDealler});
-    await this.dataContainer.getLogedInDeallerDeals().subscribe(resDeallerDeals=>{this.deallerDeals=resDeallerDeals;});
+    // await this.dataContainer.getLogedDealler().subscribe(resDealler=>{this.dealler=resDealler});
+    // await this.dataContainer.getLogedInDeallerDeals().subscribe(resDeallerDeals=>{this.deallerDeals=resDeallerDeals;});
     
-    setInterval(async () => {this.noDeals=(this.deallerDeals.length==0)}, 1000);
+    // setInterval(async () => {this.noDeals=(this.deallerDeals.length==0)}, 1000);
     
   }
   showDeals(currStatus:boolean)

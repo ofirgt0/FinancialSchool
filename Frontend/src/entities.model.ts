@@ -57,3 +57,38 @@ export interface HoldingsWorth
     currMoney:number;
 }
 
+//----------------------------------------------------------------------------
+
+export interface Teacher{
+  id:number;
+  name:string;
+  password: string;
+  class: string;
+}
+
+export interface Class{
+  name: string;
+  level: number;
+  currentCurrency: number;
+  teacher:string;
+}
+
+export interface Coin{
+  coinName: string;
+  coinId: string;
+  worth: number;
+}
+
+export interface History{
+  date:any;
+  transactionType:string;
+  historyType:string;
+  isPositive:boolean;
+}
+
+export interface Product{
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+}

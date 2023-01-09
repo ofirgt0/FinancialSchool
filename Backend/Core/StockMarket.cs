@@ -291,6 +291,5 @@ namespace Backend
             holdings.TotalWorth=totalHoldingsWorth;
             return holdings;
         }
-
     }
 }

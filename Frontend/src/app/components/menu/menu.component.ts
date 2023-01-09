@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { BackendAccessService } from 'src/app/services/BackendAccess.service';
+import { FinancialSchoolBackendAccessService } from 'src/app/services/financial-school-backend-access.service';
+import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -10,7 +13,8 @@ export class MenuComponent implements OnInit {
   isAuth = false;
   deallerName = '';
 
-  constructor(private backendAccess: BackendAccessService,private toastr: ToastrService) {}
+  constructor(private backendAccess: BackendAccessService,private toastr: ToastrService, 
+    private schoolService: FinancialSchoolBackendAccessService, public dialog: MatDialog) {}
 
   async ngOnInit(): Promise<void> {
     this.backendAccess.setAuthValue(this.isAuth);
@@ -22,23 +26,10 @@ export class MenuComponent implements OnInit {
     this.backendAccess.setAuthValue(this.isAuth);
   }
   
-  async deallerLoginAsync(id: any) {
-    const a = await this.backendAccess.onLoginAsync(id);    
-    a.subscribe((data) => {
-      this.backendAccess.getAuthValue().subscribe(isAuthRet=>this.isAuth=isAuthRet);
-      if(data==null){
-        this.toastr.error('Wrong ID! Try again ');
-      }
-      else{
-        this.deallerName = data.name;
-        this.toastr.success(this.deallerName + ' Welcom back!');
-        this.backendAccess.updateAuthDeallerName(this.deallerName);
-        this.backendAccess.setAuthValue(this.isAuth);
-      }
+  onTeacherLogin() {
+    this.dialog.open(RegisterDialogComponent, {
+      width: '30%',
     });
   }
-  getOfflineDealsCounter(deallerName:string)
-  {
 
-  }
 }

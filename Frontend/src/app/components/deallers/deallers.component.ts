@@ -16,11 +16,11 @@ export class DeallersComponent implements OnInit {
   constructor(private accessService:BackendAccessService,private dataContainer:DataContainerService) { }
 
   async ngOnInit(): Promise<void> {
-    await this.dataContainer.getDeallers().subscribe(resDealler=>{this.deallers=resDealler});
-    setInterval(async () => {
-      (await this.dataContainer.getDeallers().subscribe(resDealler=>{this.deallers=resDealler}));
+    // await this.dataContainer.getDeallers().subscribe(resDealler=>{this.deallers=resDealler});
+    // setInterval(async () => {
+    //   (await this.dataContainer.getDeallers().subscribe(resDealler=>{this.deallers=resDealler}));
       
-    }, 1000);
+    // }, 1000);
     }
 
 }

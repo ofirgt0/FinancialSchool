@@ -1,0 +1,64 @@
+@import '../landing-page.component.css'; 
+
+/* More Features Section
+--------------------------------*/
+#more-features {
+    padding: 60px 0 60px 0;
+    overflow: hidden;
+  }
+  
+  #more-features .box {
+    padding: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 30px rgba(73, 78, 92, 0.15);
+    background: #fff;
+    transition: 0.4s;
+    height: 100%;
+  }
+  
+  #more-features .icon {
+    float: left;
+  }
+    
+  #more-features h4 {
+    margin-left: 100px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+  
+  #more-features h4 a {
+    color: #111;
+  }
+  
+  #more-features p {
+    font-size: 14px;
+    /* margin-left: 100px; */
+    margin-bottom: 0;
+    line-height: 24px;
+  }
+  
+  @media (max-width: 767px) {
+    #more-features .box {
+      margin-bottom: 20px;
+    }
+  
+    #more-features .icon {
+      float: none;
+      text-align: center;
+      padding-bottom: 15px;
+    }
+  
+    #more-features h4,
+    #more-features p {
+      margin-left: 0;
+      text-align: center;
+    }
+  }
+
+  .price{
+    font-size: 50px;
+    width: 100%;
+    font-weight: bold;
+    color:brown;
+  }

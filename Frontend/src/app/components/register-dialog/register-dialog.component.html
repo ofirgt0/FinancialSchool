@@ -1,0 +1,68 @@
+<div class="tab-content" dir="rtl">
+  <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab label="התחבר">
+        <form>
+          <div class="form-outline mb-4">
+            <input type="text" [(ngModel)]="loginData.loginId" name="loginId" class="form-control" dir="ltr"/>
+            <label class="form-label" for="loginId">תעודת זהות</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input type="password" [(ngModel)]="loginData.loginPassword" name="loginPassword" class="form-control" dir="ltr"/>
+            <label class="form-label" for="loginPassword">סיסמא</label>
+          </div>
+
+          <button type="submit" (click)="onSubmit()" class="btn btn-primary btn-block mb-4">
+            התחבר
+          </button>
+        </form>
+      </mat-tab>
+      <mat-tab label="הרשם">
+        <form>
+          
+          <div class="form-outline mb-4">
+            <input type="text" [(ngModel)]="registerData.name" name="name" class="form-control" />
+            <label class="form-label" for="name">שם</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input type="text" [(ngModel)]="registerData.id" name="id" class="form-control" />
+            <label class="form-label" for="id" >תעודת זהות</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input type="text" [(ngModel)]="registerData.class" name="class" class="form-control" />
+            <label class="form-label" for="class">כיתה</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input
+              type="password"
+              [(ngModel)]="registerData.password"
+              name="password"
+              class="form-control"
+            />
+            <label class="form-label" for="password">סיסמא</label>
+          </div>
+<!-- 
+          <div class="form-outline mb-4">
+            <input
+              type="password"
+              [(ngModel)]="registerRepeatPassword"
+              name="loginId"
+              class="form-control"
+            />
+            <label class="form-label" for="registerRepeatPassword">
+              אימות סיסמא            
+            </label>
+          </div> -->
+
+          <button type="submit" (click)="onRegister()" class="btn btn-primary btn-block mb-3">
+            הרשם עכשיו
+          </button>
+        </form>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
