@@ -45,7 +45,7 @@ import { ClassComponent } from './components/class/class.component';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   //{path:'deallers' , component: ClassesComponent},
-  // {path:'class' , component: ClassComponent}
+  {path:'class' , component: ClassComponent}
 ];
 
 @NgModule({
