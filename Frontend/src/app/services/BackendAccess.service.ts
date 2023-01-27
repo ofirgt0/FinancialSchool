@@ -18,7 +18,7 @@ export class BackendAccessService {
 
   isAuth = false;
   
-  makeADealResponse!: MakeADealResponse;
+  // makeADealResponse!: MakeADealResponse;
 
   constructor(private http: HttpClient,private dataContainer:DataContainerService) {
     this.subIsAuth = new BehaviorSubject<boolean>(this.isAuth);
@@ -43,15 +43,15 @@ export class BackendAccessService {
   }
   async makeADealAsync(form: NgForm) {
     
-    var ret= await this.http.post<MakeADealResponse>(BACKEND_URL+'offers/makeADeal', {
-        deallerName: this.dataContainer.deallerName,
-        stockName: form.form.controls['StockName'].value,
-        wantedPrice: form.form.controls['Price'].value,
-        wantedAmount: form.form.controls['Amount'].value,
-        type: form.form.controls['OfferType'].value
-      });
+    // var ret= await this.http.post<MakeADealResponse>(BACKEND_URL+'offers/makeADeal', {
+    //     deallerName: this.dataContainer.deallerName,
+    //     stockName: form.form.controls['StockName'].value,
+    //     wantedPrice: form.form.controls['Price'].value,
+    //     wantedAmount: form.form.controls['Amount'].value,
+    //     type: form.form.controls['OfferType'].value
+    //   });
     
-    return ret;
+    // return ret;
   }
   async onLoginAsync(id: number) {
     var loginResponse=await this.http.get<dealler>(BACKEND_URL+'dealler/' + id);

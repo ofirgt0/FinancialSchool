@@ -1,23 +1,67 @@
 <section id="more-features" class="section-bg">
-    <div class="container" data-aos="fade-up">
+  <div class="container" data-aos="fade-up">
+    <div class="section-header">
+      <h3 class="section-title">פריטים זמינים</h3>
+      <span class="section-divider"></span>
+      <p class="section-description">המחירים להלן הינם במטבע כשף</p>
+    </div>
 
-      <div class="section-header">
-        <h3 class="section-title">פריטים זמינים</h3>
-        <span class="section-divider"></span>
-        <p class="section-description">המחירים להלן הינם במטבע כשף</p>
+    <div class="row gy-4">
+      <div class="col-lg-6" *ngFor="let product of products">
+        <div class="box">
+          <div class="price icon">{{ product.price }}</div>
+          <h4 class="title" dir="rtl">
+            <a style="font-size: 150%">{{ product.title }}</a>
+          </h4>
+          <p class="description" dir="rtl">{{ product.description }}</p>
+        </div>
       </div>
-
-      <div class="row gy-4" >
-        <div class="col-lg-6" *ngFor="let product of products">
-          <div class="box">
-            <div class="price icon">{{product.price}}</div>
-            <h4 class="title" dir="rtl">
-              <a style="font-size: 150%;">{{ product.title }}</a>
-            </h4>
-            <p class="description" dir="rtl">{{ product.description }}</p>
+      <div class="col-lg-6">
+        <div class="box">
+          <h4 class="title" dir="rtl">
+            <a style="font-size: 100%">הוסף פריט חדש</a>
+          </h4>
+          <h4 style="margin: 0" dir="rtl">
+            <a style="font-size: 100%">
+              <mat-form-field class="twothird-input">
+                <mat-label>כותרת</mat-label>
+                <input
+                  matInput
+                  placeholder="הקלד\י..."
+                  [(ngModel)]="product.title"
+                  type="text"
+                />
+              </mat-form-field>
+              <mat-form-field class="third-input">
+                <mat-label>מחיר</mat-label>
+                <input
+                  matInput
+                  placeholder="הקלד\י..."
+                  [(ngModel)]="product.price"
+                  type="number"
+                />
+              </mat-form-field>
+            </a>
+          </h4>
+          <a class="description" dir="rtl">
+            <mat-form-field style="width: 100%">
+              <mat-label>תיאור</mat-label>
+              <input
+                matInput
+                placeholder="הקלד\י..."
+                [(ngModel)]="product.description"
+                type="text"
+              />
+            </mat-form-field>
+          </a>
+          <div class="centered">
+            <button mat-mini-fab color="accent" (click)="onNewProduct()">
+              <mat-icon>add</mat-icon>
+            </button>
           </div>
         </div>
       </div>
-
     </div>
-  </section><!-- End More Features Section -->
+  </div>
+</section>
+<!-- End More Features Section -->

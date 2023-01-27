@@ -29,7 +29,8 @@ export class MenuComponent implements OnInit {
   onTeacherLogin() {
     this.dialog.open(RegisterDialogComponent, {
       width: '30%',
+    }).afterClosed().subscribe(res => {
+      this.toastr.success("ההתחברות בוצעה בהצלחה");
     });
   }
-
 }

@@ -9,18 +9,20 @@ import { Class } from 'src/entities.model';
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
-  newClass: Class = {
-    currentCurrency: 0,
-    teacher: '',
-    level: 0,
-    name: '',
-  };
+  // newClass: Class = {
+  //   id:'',
+  //   currentCurrency: 0,
+  //   teacher: '',
+  //   level: 0,
+  //   displayName: '',
+  //   currencyDifference: [2,4,5,7,-3,1,-11,2]
+  // };
 
   constructor(private backendServ: FinancialSchoolBackendAccessService) {
     this.classes$ = this.backendServ.getClasses();
   }
 
-  classes$: Observable<Class[][]>;
+  classes$: Observable<Class[]>;
 
   ngOnInit(): void {}
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FinancialSchoolBackendAccessService } from 'src/app/services/financial-school-backend-access.service';
 import { Product } from 'src/entities.model';
 
 @Component({
@@ -7,38 +8,32 @@ import { Product } from 'src/entities.model';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
-  constructor() {}
+  constructor(private backend: FinancialSchoolBackendAccessService) {}
 
-  products: Product[] = [
-    {
-      id: 1,
-      title: 'הפסקה פעילה',
-      description:
-        'הפסקה ממש פעילה שהילדים מאוד אוהבים. אם אספו מספיק כשף תוכלו לרכוש זאת',
-      price: 40,
-    },
-    {
-      id: 2,
-      title: 'שיעור ספורט',
-      description:
-        'הפסקה ממש פעילה שהילדים מאוד אוהבים. אם אספו מספיק כשף תוכלו לרכוש זאת',
-      price: 59,
-    },
-    {
-      id: 3,
-      title: 'שיעור קצר',
-      description:
-        'הפסקה ממש פעילה שהילדים מאוד אוהבים. אם אספו מספיק כשף תוכלו לרכוש זאת',
-      price: 13,
-    },
-    {
-      id: 4,
-      title: 'הפסקה פעילה',
-      description:
-        'הפסקה ממש פעילה שהילדים מאוד אוהבים. אם אספו מספיק כשף תוכלו לרכוש זאת',
-      price: 30,
-    },
-  ];
+  product: Product = {
+    description: '',
+    id: 0,
+    price: 0,
+    title: '',
+  };
 
-  ngOnInit(): void {}
+  products: Product[] = [];
+
+  ngOnInit(): void {
+    this.backend.getProducts().subscribe((products) => {
+      let resJSON = JSON.parse(JSON.stringify(products)).result;
+      console.log(resJSON);
+      resJSON.forEach((product: Product) => {
+        this.products.push(product);
+      });
+    });
+  }
+
+  onNewProduct() {
+    this.product.id =  29; //+(new Date());
+    console.log(this.product.id);
+    this.backend
+      .insertProducts(this.product)
+      .subscribe((res) => console.log(res));
+  }
 }
