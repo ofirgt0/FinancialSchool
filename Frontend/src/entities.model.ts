@@ -7,11 +7,13 @@ export interface stock {
   percentageDifference: number[];
   imgUrl?: string;
 }
+
 export interface stockWithAmount {
   stock: stock;
   amount: number;
 
 }
+
 export interface dealler {
   id: number;
   name: string;
@@ -37,6 +39,7 @@ export interface Deal{
   stockName:string;
   dealTime:any;
 }
+
 export enum ActionPerformedType
 {
     WasFullyExecuted,
@@ -44,11 +47,13 @@ export enum ActionPerformedType
     WasNotExecutedNewOfferHasUploaded,
     WasNotExecutedOfferNotPossible
 }
+
 export interface MakeADealResponse
 {
     quantityRemaining:number;
     action:ActionPerformedType ;
 }
+
 export interface HoldingsWorth
 {
     totalWorth:number;
@@ -59,18 +64,19 @@ export interface HoldingsWorth
 
 //----------------------------------------------------------------------------
 
-export interface Teacher{
-  id:number;
-  name:string;
+export interface User{
+  userName: string;//real id - pk
   password: string;
+  displayName: string;
   class: string;
+  type: string;
 }
 
 export interface Class{
-  name: string;
-  level: number;
-  currentCurrency: number;
+  id: string; //pk
+  totalCash: number;
   teacher:string;
+  displayName: string
 }
 
 export interface Coin{

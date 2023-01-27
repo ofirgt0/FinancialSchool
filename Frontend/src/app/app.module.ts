@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -11,16 +11,16 @@ import { HomeComponent } from './components/home/home.component';
 // import { DeallersComponent } from './components/deallers/deallers.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RoundBigNumbersPipe } from './Pipes/RoundBigNumbers';
-import { MakeADealComponent } from './components/home/make-adeal/make-adeal.component';
+// import { MakeADealComponent } from './components/home/make-adeal/make-adeal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ChartComponent } from './components/home/chart/chart.component';
-import { NgbToastModule } from  'ngb-toast';
+import { NgbToastModule } from 'ngb-toast';
 import { ToastrModule } from 'ngx-toastr';
 import { DateAsAgoPipe } from './Pipes/dateAsAgo';
 import { DealsViewComponent } from './components/dealler/deals-view/deals-view.component';
@@ -33,17 +33,20 @@ import { ProductsComponent } from './components/home/landing-page/products/produ
 import { AdminComponent } from './components/admin/admin.component';
 import { EditClassDialogComponent } from './components/admin/edit-class-dialog/edit-class-dialog.component';
 import { EditProductDialogComponent } from './components/admin/edit-product-dialog/edit-product-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 // import { AngularFireModule } from "@angular/fire/compat";
 // import { AngularFireDatabaseModule, AngularFireObject } from '@angular/fire/compat/database';
 import { environment } from 'src/environments/environment';
+import { ClassComponent } from './components/class/class.component';
 
 const appRoutes: Routes = [
-  {path:'' , component: HomeComponent},
-  {path:'deallers' , component: ClassesComponent},
-  // {path:'dealler' , component: DeallerComponent}
-
-  ];
+  { path: '', component: HomeComponent },
+  //{path:'deallers' , component: ClassesComponent},
+  // {path:'class' , component: ClassComponent}
+];
 
 @NgModule({
   declarations: [
@@ -54,7 +57,7 @@ const appRoutes: Routes = [
     MenuComponent,
     HomeComponent,
     // DeallersComponent,
-    MakeADealComponent,
+    // MakeADealComponent,
     ChartComponent,
     DealsViewComponent,
     HoldingsViewComponent,
@@ -66,8 +69,8 @@ const appRoutes: Routes = [
     ProductsComponent,
     AdminComponent,
     EditClassDialogComponent,
-    EditProductDialogComponent
-             
+    EditProductDialogComponent,
+    ClassComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,22 +78,24 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     HttpClientModule,
     MatSliderModule,
-    MatBadgeModule ,
+    MatBadgeModule,
     MatButtonModule,
-    MatDialogModule ,
+    MatDialogModule,
     MatCardModule,
     MatTabsModule,
     NgbToastModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes), 
+    MatSelectModule,
+    MatInputModule,
+    MatIconModule,
+    RouterModule.forRoot(appRoutes),
     // AngularFireModule.initializeApp(environment.firebaseConfig),
     // AngularFireDatabaseModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
-
+export class AppModule {}
 
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/app";

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { FinancialSchoolBackendAccessService } from 'src/app/services/financial-school-backend-access.service';
 import { Class } from 'src/entities.model';
 
 @Component({
@@ -7,156 +9,24 @@ import { Class } from 'src/entities.model';
   styleUrls: ['./classes.component.css'],
 })
 export class ClassesComponent implements OnInit {
-  classes: Class[][] = [
-    [
-      {
-        name: "א'1",
-        level: 1,
-        currentCurrency: 100,
-        teacher: 'מיכל אנסקי',
-      },
-      {
-        name: "א'2",
-        level: 1,
-        currentCurrency: 100,
-        teacher: 'רותם סלע',
-      },
-      {
-        name: "א'3",
-        level: 1,
-        currentCurrency: 100,
-        teacher: 'גיא זוארץ',
-      },
-      {
-        name: "א'4",
-        level: 1,
-        currentCurrency: 100,
-        teacher: 'מיכל אנסקי',
-      },
-    ],
-    [
-      {
-        name: "ב'1",
-        level: 2,
-        currentCurrency: 100,
-        teacher: 'מיכל אנסקי',
-      },
-      {
-        name: "ב'2",
-        level: 2,
-        currentCurrency: 100,
-        teacher: 'רותם סלע',
-      },
-      {
-        name: "ב'3",
-        level: 2,
-        currentCurrency: 100,
-        teacher: 'גיא זוארץ',
-      },
-      {
-        name: "ב'4",
-        level: 2,
-        currentCurrency: 100,
-        teacher: 'מיכל אנסקי',
-      },
-    ],
-    [
-      {
-        name: "ג'1",
-        level: 3,
-        currentCurrency: 100,
-        teacher: 'מיכל אנסקי',
-      },
-      {
-        name: "ג'2",
-        level: 3,
-        currentCurrency: 100,
-        teacher: 'רותם סלע',
-      },
-      {
-        name: "ג'3",
-        level: 3,
-        currentCurrency: 100,
-        teacher: 'גיא זוארץ',
-      },
-      {
-        name: "ג'4",
-        level: 3,
-        currentCurrency: 100,
-        teacher: 'מיכל אנסקי',
-      },
-    ],
-    [
-      {
-        name: "ד'1",
-        level: 4,
-        currentCurrency: 100,
-        teacher: 'מיכל אנסקי',
-      },
-      {
-        name: "ד'2",
-        level: 4,
-        currentCurrency: 100,
-        teacher: 'רותם סלע',
-      },
-      {
-        name: "ד'3",
-        level: 4,
-        currentCurrency: 100,
-        teacher: 'גיא זוארץ',
-      }
-    ],
-    [
-      {
-        name: "ה'1",
-        level: 1,
-        currentCurrency: 100,
-        teacher: 'מיכל אנסקי',
-      },
-      {
-        name: "ה'2",
-        level: 1,
-        currentCurrency: 100,
-        teacher: 'רותם סלע',
-      },
-      {
-        name: "ה'3",
-        level: 1,
-        currentCurrency: 100,
-        teacher: 'גיא זוארץ',
-      }
-    ],
-    [
-      {
-        name: "ו'1",
-        level: 1,
-        currentCurrency: 100,
-        teacher: 'מיכל אנסקי',
-      },
-      {
-        name: "ו'2",
-        level: 1,
-        currentCurrency: 100,
-        teacher: 'רותם סלע',
-      },
-      {
-        name: "ו'3",
-        level: 1,
-        currentCurrency: 100,
-        teacher: 'גיא זוארץ',
-      },
-      {
-        name: "ו'4",
-        level: 1,
-        currentCurrency: 100,
-        teacher: 'גיא זוארץ',
-      }
-    ],
-  ];
-
-  constructor() {}
+  classes:{ [grade: string]: Class[] } = {
+    a: [],
+    b: [],
+    c: [],
+    d: [],
+    e: [],
+    f: [],
+  };
+  
+  constructor(private backend: FinancialSchoolBackendAccessService) {}
 
   ngOnInit(): void {
-    console.log("fff")
+    this.backend.getClasses().subscribe((classes) => {
+      let resJSON = JSON.parse(JSON.stringify(classes)).result;
+      console.log(resJSON);
+      resJSON.forEach((cls: Class) => {
+        this.classes[cls.id.charAt(0)].push(cls);
+      });
+    });
   }
 }

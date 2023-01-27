@@ -1,13 +1,13 @@
 <div style="display: flex; flex-direction: row;width:98%; margin-bottom: 15px; justify-content: center;" dir="rtl">
   <div
-    *ngFor="let level of classes"
+    *ngFor="let class of classes | keyvalue"
     style="display: flex; flex-direction: column; flex-grow: 4;"
   >
-    <div *ngFor="let className of level" class="shadow" style="width:90%">
+    <div *ngFor="let className of class.value" class="shadow" style="width:90%">
       <!-- <button mat-button>Basic</button> -->
       <button mat-button class="class-card" dir="rtl" style="width:100%; margin-top: 5px; padding: 30px;">
         <mat-card-header>
-          <mat-card-title>כיתה {{ className.name }}  </mat-card-title>
+          <mat-card-title>כיתה {{ className.displayName }}  </mat-card-title>
           <mat-card-subtitle>{{ className.teacher }}</mat-card-subtitle>
         </mat-card-header>
       </button>
