@@ -3,22 +3,12 @@ import { Injectable, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Class, Coin, Product, User } from 'src/entities.model';
 
-// import { AngularFireModule } from '@angular/fire/compat'; import { AngularFireDatabaseModule } from '@angular/fire/compat/database'; import { AngularFireStorageModule } from '@angular/fire/compat/storage'; import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-
-// const BACKEND_URL =
-//   'https://financialschool-dfd3e-default-rtdb.firebaseio.com/';
-// const TEACHER = 'teacher.json';
-// const CLASSES = 'classes.json';
-// const PRODUCTS = 'products.json';
-// const HISTORY = 'history.json';
-// const COINS = 'coins.json';
-
 const BACKEND_URL = 'https://localhost:44390/api/';
-const USERS = 'Users';
-const CLASSES = 'Classes';
-const PRODUCTS = 'Products';
-const HISTORY = 'History';
-const COINS = 'Coins';
+const USERS = 'Users/';
+const CLASSES = 'Classes/';
+const PRODUCTS = 'Products/';
+const HISTORY = 'History/';
+const COINS = 'Coins/';
 
 @Injectable({
   providedIn: 'root',
@@ -48,10 +38,6 @@ export class FinancialSchoolBackendAccessService implements OnInit {
 
   getUser(userId: string): Observable<any> {
     return this.http.get<User>(BACKEND_URL + USERS);
-  }
-
-  getAuth(userName: string, password: string) {
-    return this.http.get<boolean>(BACKEND_URL + USERS + '/Auth/' + userName + '/' + password);
   }
 
   insertNewUser(newUser: User): Observable<any> {
@@ -97,7 +83,7 @@ export class FinancialSchoolBackendAccessService implements OnInit {
     return this.http.get(BACKEND_URL + HISTORY);
   }
 
-  getHistoryLine(lineId: number): Observable<any> {
+  getHistoryByClassId(lineId: string): Observable<any> {
     return this.http.get(BACKEND_URL + HISTORY + lineId);
   }
 

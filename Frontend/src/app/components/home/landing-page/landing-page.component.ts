@@ -11,14 +11,31 @@ import { RegisterDialogComponent } from '../../register-dialog/register-dialog.c
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor(private toastr: ToastrService, private schoolService: FinancialSchoolBackendAccessService, public dialog: MatDialog) {}
+  loggedInUserDisplayName!: string | null;
+  loggedInUserId!: string | null;
+
+  constructor(private toastr: ToastrService, 
+              public dialog: MatDialog, private backend: FinancialSchoolBackendAccessService) {}
 
   ngOnInit(): void {
+    this.loggedInUserId = localStorage.getItem('TeacherId')
+    this.loggedInUserDisplayName = localStorage.getItem('TeacherDisplayName')
+  }
+
+  isTeacherLoggedin(){
+    return this.loggedInUserDisplayName != null && this.loggedInUserDisplayName != "";
+  }
+
+  onLogout()
+  {
+    localStorage.setItem('TeacherId','')
+    localStorage.setItem('TeacherDisplayName','')
+    window.location.reload()
   }
   
   onTeacherLogin() {
     this.dialog.open(RegisterDialogComponent, {
-      width: '30%',
+      width: '30%'
     });
   }
 }

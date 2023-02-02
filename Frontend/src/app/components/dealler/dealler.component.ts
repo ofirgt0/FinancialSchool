@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendAccessService } from 'src/app/services/BackendAccess.service';
 import { Deal, dealler } from 'src/entities.model';
 import { Observable } from 'rxjs';
-import { DataContainerService } from 'src/app/services/data-container.service';
 
 @Component({
   selector: 'app-dealler',
@@ -16,8 +14,7 @@ export class DeallerComponent implements OnInit {
   noDeals=false;
   historyView=true;
 
-  constructor(private accessService:BackendAccessService,private dataContainer:DataContainerService) { 
-    accessService
+  constructor() { 
   }
 
   async ngOnInit(): Promise<void> {    

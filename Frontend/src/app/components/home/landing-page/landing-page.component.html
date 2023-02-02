@@ -13,11 +13,8 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">כיתות</a></li>
           <li><a class="nav-link scrollto" href="#about">פרסים</a></li>
-          <li>
-            <a class="nav-link scrollto" (click)="onTeacherLogin()"
-              >התחברות מורים</a
-            >
-          </li>
+          <li *ngIf="!isTeacherLoggedin()" ><a class="nav-link scrollto" (click)="onTeacherLogin()">התחברות מורים</a></li>
+          <li *ngIf="isTeacherLoggedin()"><a class="nav-link scrollto" (click)="onLogout()">התנתקות</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -26,7 +23,8 @@
   </header>
   <!-- End Header -->
   <div class="hero-text" data-aos="zoom-out">
-    <h2>ברוכים הבאים לבית הספר החברתי</h2>
+    <h2 *ngIf="isTeacherLoggedin()">{{ loggedInUserDisplayName }} ברוכ\ה הבאה</h2>
+    <h2 *ngIf="!isTeacherLoggedin()">ברוכים הבאים לבית הספר החברתי</h2>
     <p>כאן תוכלו ללמוד לקבל כלים חברתיים, חינוך פיננסי ועוד...</p>
     <a href="#about" class="btn-get-started scrollto">Get Started</a>
   </div>

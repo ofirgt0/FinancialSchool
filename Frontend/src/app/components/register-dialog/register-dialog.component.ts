@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
 import { FinancialSchoolBackendAccessService } from 'src/app/services/financial-school-backend-access.service';
 import { Class, User } from 'src/entities.model';
 
@@ -13,7 +14,7 @@ export class RegisterDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<RegisterDialogComponent>,
     public financialService: FinancialSchoolBackendAccessService,
-    private toastr: ToastrService
+    private toastr: ToastrService, private auth: AuthService
   ) {}
 
   loginUserName = '';
@@ -45,7 +46,7 @@ export class RegisterDialogComponent implements OnInit {
   class: Class = {
     displayName: '',
     id: '',
-    teacher: '',
+    teacherId: '',
     totalCash: 100,
   };
   classLevel:string = '';
@@ -59,32 +60,22 @@ export class RegisterDialogComponent implements OnInit {
   }
 
   onLogin() {
-    this.financialService
-      .getAuth(this.loginUserName, this.loginPassword)
-      .subscribe(
-        (res) => {
-          this.AuthResult = true;
-          this.dialogRef.close(this.AuthResult);
-        },
-        (err) => {
-          console.log(err);
-          this.AuthResult = false;
-        }
-      );
+    this.auth.getAuth(this.loginUserName, this.loginPassword);
+    this.dialogRef.close(this.AuthResult);
   }
-
-  onSubmit() {}
 
   onRegister() {
     this.registerData.class = this.classLevel + this.classNumber;
     this.class.id = this.classLevel + this.classNumber;
-    this.class.teacher = this.registerData.userName;
+    this.class.teacherId = this.registerData.userName;
     this.class.displayName = this.classesMap[this.classLevel] + "'" + this.classNumber;
-    
-    this.financialService.insertNewUser(this.registerData).subscribe(res=>{console.log(res)}, ()=>this.toastr.success("לא ניתן להוסיף את המורה"));
-    this.financialService.insertNewClass(this.class).subscribe(res=>{console.log(res)}, ()=>this.toastr.success("לא ניתן להוסיף את הכיתה הרצויה"));
+    console.log(this.class);
+    this.financialService.insertNewUser(this.registerData).subscribe(res=>{console.log(res)}, ()=>this.toastr.warning("לא ניתן להוסיף את המורה"));
+    this.financialService.insertNewClass(this.class).subscribe(res=>{console.log(res)}, ()=>this.toastr.warning("לא ניתן להוסיף את הכיתה הרצויה"));
 
     this.toastr.success("המורה נרשם בהצלחה");
+    this.auth.getAuth(this.registerData.userName,this.registerData.password);
+    this.dialogRef.close(this.AuthResult);
     this.dialogRef.close();
   }
 }

@@ -1,24 +1,34 @@
-<section id="hero" dir="rtl">
-    <header id="header" class="d-flex align-items-center header-transparent">
-      <div class="container d-flex justify-content-between align-items-center">
-        <div id="logo">
-          <h1><a href="index.html">שם הכיתה</a></h1>
-        </div>
-  
-        <nav id="navbar" class="navbar">
-          <ul>
-            <li><a class="nav-link scrollto active" href="/">ראשי</a></li>
-            <li><a class="nav-link scrollto" href="#about">פרסים</a></li>
-            <li>
-              <a class="nav-link scrollto" >הכיתה שלי</a
-              >
-            </li>
-          </ul> 
-          <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav>
+<div class="container">
+   <div class="row">
+      <div class="col-md-12">
+         <div id="content" class="content content-full-width">
+            
+            <div class="profile">
+               <div class="profile-header">
+                  <div class="profile-header-cover"></div>
+                  <div class="profile-header-content telegramColor">
+                    <img src="assets/deallerAvatar/Amit.png" class="shadow rounded-circle profilePic center" width="10%">
+                     <div class="profile-header-info">
+                        <h4 class="m-t-10 m-b-5 center" >{{ chosenClass.displayName }} | {{ chosenClass.teacherId }}</h4>
+                        <p class="m-b-10 center" style="font-size: 200%;">{{ chosenClass.totalCash }} כשף</p>
+                     </div>
+                  </div>
+                  <ul class="profile-header-tab nav nav-tabs">
+                     <li class="nav-item"><a class=" active show" data-toggle="tab">Purchase History</a></li>
+                     <li class="nav-item"><a class="show pointer" data-toggle="tab">Holdings</a></li>
+                  </ul>
+               </div>
+            </div>
+
+            <div class="profile-content">
+               <!-- <div class="tab-content p-0" *ngIf="historyView">
+                  <app-deals-view></app-deals-view>
+               </div>
+               <div class="tab-content p-0" *ngIf="!historyView">
+                  <app-holdings-view></app-holdings-view>
+               </div> -->
+            </div>
+         </div>
       </div>
-    </header>
-    <div class="hero-text" data-aos="zoom-out"> 
-        <app-chart [graphValues]="classCurrencyHistory" label="יום" [classId]="classId"></app-chart>
-     </div>
-  </section>
+   </div>
+</div>

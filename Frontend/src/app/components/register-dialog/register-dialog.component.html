@@ -32,7 +32,7 @@
 
           <button
             type="submit"
-            (click)="onSubmit()"
+            (click)="onLogin()"
             class="btn btn-primary btn-block mb-4"
           >
             התחבר
@@ -44,49 +44,42 @@
           <div class="form-outline mb-4 centered">
             <mat-form-field class="third-input">
               <mat-label>שם מלא</mat-label>
-              <input matInput placeholder="הקלד\י..." [(ngModel)]="registerData.displayName" type="text">
+              <input
+                matInput
+                placeholder="הקלד\י..."
+                [(ngModel)]="registerData.displayName"
+                type="text"
+              />
             </mat-form-field>
 
             <mat-form-field class="third-input">
               <mat-label>תעודת זהות</mat-label>
-              <input matInput placeholder="הקלד\י..." [(ngModel)]="registerData.userName" type="text">
+              <input
+                matInput
+                placeholder="הקלד\י..."
+                [(ngModel)]="registerData.userName"
+                type="text"
+              />
             </mat-form-field>
-<!-- 
-            <input
-              type="text"
-              [(ngModel)]="registerData.displayName"
-              name="name"
-              class="form-control"
-            />
-            <label class="form-label" for="name">שם</label>
-      
-            <input
-              type="text"
-              [(ngModel)]="registerData.userName"
-              name="id"
-              class="form-control"
-            />
-            <label class="form-label" for="id">תעודת זהות</label> -->
-          
+
             <mat-form-field class="third-input">
               <mat-label>סיסמא</mat-label>
-              <input matInput placeholder="הקלד\י..." [(ngModel)]="registerData.password" type="password">
+              <input
+                matInput
+                placeholder="הקלד\י..."
+                [(ngModel)]="registerData.password"
+                type="password"
+              />
             </mat-form-field>
-            <!-- <input
-              type="password"
-              [(ngModel)]="registerData.password"
-              name="password"
-              class="form-control"
-            /> -->
-            <!-- <label class="form-label" for="password">סיסמא</label> -->
           </div>
           <div class="form-outline mb-4">
-            <!-- <input type="text" [(ngModel)]="registerData.class" name="class" class="form-control" />
-            <label class="form-label" for="class">כיתה</label> -->
             <mat-form-field appearance="fill" class="half-input">
               <mat-label>שכבה</mat-label>
               <mat-select [(ngModel)]="classLevel">
-                <mat-option *ngFor="let class of classes" [value]="class.gradeId" >
+                <mat-option
+                  *ngFor="let class of classes"
+                  [value]="class.gradeId"
+                >
                   {{ class.viewGrade }}
                 </mat-option>
               </mat-select>
@@ -100,11 +93,11 @@
               </mat-select>
             </mat-form-field>
           </div>
-
           <button
             type="submit"
             (click)="onRegister()"
-            class="btn btn-primary btn-block mb-3">
+            class="btn btn-primary btn-block mb-3"
+          >
             הרשם עכשיו
           </button>
         </form>
