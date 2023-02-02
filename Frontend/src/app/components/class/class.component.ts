@@ -19,7 +19,7 @@ export class ClassComponent implements OnInit {
   classCurrencyHistory:History[] = [];
   myChart: any;
   classId!: string;
-  teacheeData!: User;
+  teacherData!: User;
 
   constructor(private backend: FinancialSchoolBackendAccessService, private route: ActivatedRoute) {}
 
@@ -30,7 +30,7 @@ export class ClassComponent implements OnInit {
       this.chosenClass = classData;
       console.log(this.chosenClass);
       this.backend.getUser(this.chosenClass.teacherId).subscribe(teacher => {
-        this.teacheeData = teacher;
+        this.teacherData = teacher;
         console.log(teacher);
       });
 

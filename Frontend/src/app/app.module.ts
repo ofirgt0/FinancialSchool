@@ -36,6 +36,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { environment } from 'src/environments/environment';
 import { ClassComponent } from './components/class/class.component';
+import { HistoryComponent } from './components/class/history/history.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -65,6 +66,7 @@ const appRoutes: Routes = [
     EditClassDialogComponent,
     EditProductDialogComponent,
     ClassComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,
