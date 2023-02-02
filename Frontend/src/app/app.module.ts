@@ -5,13 +5,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-// import { DeallerComponent } from './components/dealler/dealler.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { HomeComponent } from './components/home/home.component';
-// import { DeallersComponent } from './components/deallers/deallers.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RoundBigNumbersPipe } from './Pipes/RoundBigNumbers';
-// import { MakeADealComponent } from './components/home/make-adeal/make-adeal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -37,15 +34,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 
-// import { AngularFireModule } from "@angular/fire/compat";
-// import { AngularFireDatabaseModule, AngularFireObject } from '@angular/fire/compat/database';
 import { environment } from 'src/environments/environment';
 import { ClassComponent } from './components/class/class.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  //{path:'deallers' , component: ClassesComponent},
-  {path:'class' , component: ClassComponent}
+  {path:'class/:classId' , component: ClassComponent}
 ];
 
 @NgModule({
@@ -96,26 +90,3 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-
-// Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-// // TODO: Add SDKs for Firebase products that you want to use
-// // https://firebase.google.com/docs/web/setup#available-libraries
-
-// // Your web app's Firebase configuration
-// // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// const firebaseConfig = {
-//   apiKey: "AIzaSyAEsYhD5AFWp1wSBmQvMoVLMsaf9Xo2UxE",
-//   authDomain: "financialschool-dfd3e.firebaseapp.com",
-//   databaseURL: "https://financialschool-dfd3e-default-rtdb.firebaseio.com",
-//   projectId: "financialschool-dfd3e",
-//   storageBucket: "financialschool-dfd3e.appspot.com",
-//   messagingSenderId: "785869715307",
-//   appId: "1:785869715307:web:ae52d978cd40873d57fe2e",
-//   measurementId: "G-JJ8XET8WQJ"
-// };
-
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);

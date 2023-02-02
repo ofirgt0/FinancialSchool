@@ -2,9 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 //import Chart from 'chart.js/auto';
 
-import { BackendAccessService } from 'src/app/services/BackendAccess.service';
 import { ChartManagerService } from 'src/app/services/chart-manager.service';
-import { DataContainerService } from 'src/app/services/data-container.service';
 import { FinancialSchoolBackendAccessService } from 'src/app/services/financial-school-backend-access.service';
 import { Class, stock } from 'src/entities.model';
 
@@ -39,7 +37,6 @@ export class ChartComponent implements OnInit {
 
   constructor(
     private backendAccessService: FinancialSchoolBackendAccessService,
-    private dataContainer: DataContainerService,
     private chartService: ChartManagerService
   ) {}
 

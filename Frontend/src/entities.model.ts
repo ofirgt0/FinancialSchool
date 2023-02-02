@@ -75,7 +75,7 @@ export interface User{
 export interface Class{
   id: string; //pk
   totalCash: number;
-  teacher:string;
+  teacherId: string;
   displayName: string
 }
 
