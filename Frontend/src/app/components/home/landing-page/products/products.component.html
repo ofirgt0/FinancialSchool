@@ -64,4 +64,70 @@
     </div>
   </div>
 </section>
-<!-- End More Features Section -->
+
+<div class="container py-5">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <ul class="list-group shadow">
+        <li class="list-group-item" *ngFor="let product of products" style="text-align: right;">
+          <div class="media align-items-lg-center flex-column flex-lg-row-reverse p-3">
+            <div class="media-body order-2 order-lg-4">
+              <h5 class="mt-0 font-weight-bold mb-2">{{ product.title }}</h5>
+              <p class="font-italic text-muted mb-0 small">{{ product.description }}</p>
+              <div class="d-flex align-items-center justify-content-between mt-1">
+                <h6 class="font-weight-bold my-2" style="font-size: larger;">{{ product.price }}$</h6>
+                <ul class="list-inline small">
+                  <button mat-raised-button *ngIf="isLoggedIn$ | async as isLoggedIn" (click)="buyProduct(product.id)">קנה עכשיו</button>
+                </ul>
+              </div>
+            </div><img src="../../../../../assets/img/product-logo.jpg" alt="Generic placeholder image" width="120" class="ml-lg-5 order-1 order-lg-2">
+          </div>
+        </li>
+        <li class="list-group-item" style="text-align: right;" *ngIf="isLoggedIn$ | async as isLoggedIn">
+          <div class="media align-items-lg-center flex-column flex-lg-row-reverse p-3">
+            <div class="media-body order-2 order-lg-4">
+              <h4 style="margin: 0" dir="rtl">
+                <a style="font-size: 100%">
+                  <mat-form-field class="twothird-input">
+                    <mat-label>כותרת</mat-label>
+                    <input
+                      matInput
+                      placeholder="הקלד\י..."
+                      [(ngModel)]="product.title"
+                      type="text"
+                    />
+                  </mat-form-field>
+                  <mat-form-field class="third-input">
+                    <mat-label>מחיר</mat-label>
+                    <input
+                      matInput
+                      placeholder="הקלד\י..."
+                      [(ngModel)]="product.price"
+                      type="number"
+                    />
+                  </mat-form-field>
+                </a>
+              </h4>
+              <a class="description" dir="rtl">
+                <mat-form-field style="width: 100%">
+                  <mat-label>תיאור</mat-label>
+                  <input
+                    matInput
+                    placeholder="הקלד\י..."
+                    [(ngModel)]="product.description"
+                    type="text"
+                  />
+                </mat-form-field>
+              </a>
+              <div class="centered">
+                <button mat-mini-fab color="accent" (click)="onNewProduct()">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </div>
+            </div><img src="../../../../../assets/img/product-logo.jpg" alt="Generic placeholder image" width="120" class="ml-lg-5 order-1 order-lg-2">
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

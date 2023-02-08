@@ -30,5 +30,11 @@ namespace FinancialSchool.SqlProviders
             _context.Classes.Add(newClass);
             return await _context.SaveChangesAsync() > 0;
         }
+
+        public async Task<bool> ChangeClassCashByDifferenceAsync(string classId, int diff)
+        {
+            _context.Classes.First(iterateClass => iterateClass.Id == classId).TotalCash += diff;
+            return await _context.SaveChangesAsync() > 0;
+        }
     }
 }

@@ -11,5 +11,7 @@ namespace FinancialSchool.Interfaces
         Task<IList<Class>> GetAllClassesAsync();
         Task<Class> GetClassByIdAsync(string classId);
         Task<bool> InsertClassAsync(Class newClass);
+        Task<bool> ChangeClassCashByDifferenceAsync(string classId, int diff);
+
     }
 }

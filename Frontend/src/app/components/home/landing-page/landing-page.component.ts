@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 import { FinancialSchoolBackendAccessService } from 'src/app/services/financial-school-backend-access.service';
 import { RegisterDialogComponent } from '../../register-dialog/register-dialog.component';
 
@@ -13,13 +15,22 @@ export class LandingPageComponent implements OnInit {
 
   loggedInUserDisplayName!: string | null;
   loggedInUserId!: string | null;
+  isLoggedIn$!: BehaviorSubject<boolean>;
 
   constructor(private toastr: ToastrService, 
-              public dialog: MatDialog, private backend: FinancialSchoolBackendAccessService) {}
+              private authService: AuthService,
+              public dialog: MatDialog, 
+              private backend: FinancialSchoolBackendAccessService) {}
 
   ngOnInit(): void {
-    this.loggedInUserId = localStorage.getItem('TeacherId')
-    this.loggedInUserDisplayName = localStorage.getItem('TeacherDisplayName')
+    this.isLoggedIn$ = this.authService.loggedInBehaviorSubject;
+    this.authService.isLoggedIn$.subscribe(isLoggedIn => {
+      if(isLoggedIn)
+      {
+        this.loggedInUserDisplayName = this.authService.loginTeacher.displayName;
+        this.loggedInUserId = this.authService.loginTeacher.userName;
+      }
+    });
   }
 
   isTeacherLoggedin(){
@@ -29,7 +40,7 @@ export class LandingPageComponent implements OnInit {
   onLogout()
   {
     localStorage.setItem('TeacherId','')
-    localStorage.setItem('TeacherDisplayName','')
+    localStorage.setItem('TeacherPassword','')
     window.location.reload()
   }
   

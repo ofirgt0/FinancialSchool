@@ -13,8 +13,8 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">כיתות</a></li>
           <li><a class="nav-link scrollto" href="#about">פרסים</a></li>
-          <li *ngIf="!isTeacherLoggedin()" ><a class="nav-link scrollto" (click)="onTeacherLogin()">התחברות מורים</a></li>
-          <li *ngIf="isTeacherLoggedin()"><a class="nav-link scrollto" (click)="onLogout()">התנתקות</a></li>
+          <li *ngIf="!(isLoggedIn$ | async)" ><a class="nav-link scrollto" (click)="onTeacherLogin()">התחברות מורים</a></li>
+          <li *ngIf="isLoggedIn$ | async"><a class="nav-link scrollto" (click)="onLogout()">התנתקות</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -47,4 +47,6 @@
  
 <app-classes></app-classes>
 
-<app-products></app-products>
+<app-products style="margin-top:10%"></app-products>
+
+
