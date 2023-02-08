@@ -31,5 +31,10 @@ namespace FinancialSchool.Repository
         {
             return await _classesSqlProvider.InsertClassAsync(newClass);
         }
+
+        public async Task<bool> ChangeClassCashByDifferenceAsync(string classId, int diff)
+        {
+            return await _classesSqlProvider.ChangeClassCashByDifferenceAsync(classId, diff);
+        }
     }
 }

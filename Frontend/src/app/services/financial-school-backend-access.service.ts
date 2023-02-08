@@ -66,7 +66,7 @@ export class FinancialSchoolBackendAccessService implements OnInit {
     return this.http.get(BACKEND_URL + PRODUCTS);
   }
 
-  getProduct(productId: string): Observable<any> {
+  getProduct(productId: number): Observable<any> {
     return this.http.get(BACKEND_URL + PRODUCTS + productId);
   }
 
@@ -76,6 +76,11 @@ export class FinancialSchoolBackendAccessService implements OnInit {
 
   deleteProduct(productId: string): Observable<any> {
     return this.http.delete(BACKEND_URL + PRODUCTS + productId);
+  }
+
+  buyProduct(classId: string, productId: number)
+  {
+    return this.http.get(BACKEND_URL + PRODUCTS + classId + '/' + productId);
   }
 
   //history

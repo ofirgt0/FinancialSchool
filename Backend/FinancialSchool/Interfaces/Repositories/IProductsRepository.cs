@@ -12,5 +12,6 @@ namespace FinancialSchool.Interfaces.Repositories
         Task<Product> GetProductByIdAsync(int ProductId);
         Task<bool> InsertProductAsync(Product newProduct);
         Task<bool> DeleteProductByIdAsync(int ProductId);
+        Task<bool> BuyProductAsync(int ProductId, string classId);
     }
 }

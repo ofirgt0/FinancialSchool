@@ -41,5 +41,11 @@ namespace FinancialSchool.Controllers
         {
             return Ok(await _productsRepository.DeleteProductByIdAsync(id));
         }
+
+        [HttpGet("Buy/{classId}/{productId}")]
+        public async Task<ActionResult> BuyProductAsync(string classId, int productId)
+        {
+            return Ok(await _productsRepository.BuyProductAsync(productId,classId));
+        }
     }
 }
