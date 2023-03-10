@@ -42,6 +42,7 @@ export class LandingPageComponent implements OnInit {
     localStorage.setItem('TeacherId','')
     localStorage.setItem('TeacherPassword','')
     window.location.reload()
+    this.toastr.success("התנתקת בהצלחה")
   }
   
   onTeacherLogin() {

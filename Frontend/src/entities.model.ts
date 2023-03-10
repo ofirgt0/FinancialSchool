@@ -86,10 +86,11 @@ export interface Coin{
 }
 
 export interface History{
+  id:number
   date:any;
-  transactionType:string;
-  historyType:string;
-  isPositive:boolean;
+  productId:string;
+  transactionPrice:number;
+  classId:string;
 }
 
 export interface Product{

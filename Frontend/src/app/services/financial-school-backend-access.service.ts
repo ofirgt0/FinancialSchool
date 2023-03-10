@@ -80,7 +80,7 @@ export class FinancialSchoolBackendAccessService implements OnInit {
 
   buyProduct(classId: string, productId: number)
   {
-    return this.http.get(BACKEND_URL + PRODUCTS + classId + '/' + productId);
+    return this.http.get(BACKEND_URL + CLASSES + classId + '/' + productId);
   }
 
   //history
@@ -88,8 +88,8 @@ export class FinancialSchoolBackendAccessService implements OnInit {
     return this.http.get(BACKEND_URL + HISTORY);
   }
 
-  getHistoryByClassId(lineId: string): Observable<any> {
-    return this.http.get(BACKEND_URL + HISTORY + lineId);
+  getHistoryByClassId(classId: string): Observable<History> {
+    return this.http.get<History>(BACKEND_URL + HISTORY + classId);
   }
 
   insertNewHistoryLine(historyLine: History): Observable<any> {

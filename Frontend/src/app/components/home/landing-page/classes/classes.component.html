@@ -4,12 +4,11 @@
     style="display: flex; flex-direction: column; flex-grow: 4;"
   >
     <div *ngFor="let className of class.value" class="shadow" style="width:90%">
-      <!-- <button mat-button>Basic</button> -->
-      <button routerLink="/class/{{className.id}}" mat-button class="class-card" dir="rtl" style="width:100%; margin-top: 5px; padding: 30px;">
+      <button routerLink="/class/{{className.id}}" mat-button class="class-card" dir="rtl" style="width:100%; margin-top: 5px; padding: 15px;">
         <mat-card-header>
-          <mat-card-title>כיתה {{ className.displayName }}  </mat-card-title>
-          <!-- <mat-card-subtitle>{{ className.teacher }}</mat-card-subtitle> -->
+          <mat-card-title style="width:100%">כיתה {{ className.displayName }}  </mat-card-title>
         </mat-card-header>
+        <mat-card-subtitle style=" font-size: larger">{{ className.totalCash }}</mat-card-subtitle>
       </button>
     </div>
   </div>

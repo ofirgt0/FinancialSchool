@@ -6,12 +6,14 @@ import { Class, User } from 'src/entities.model';
 
 const BACKEND_URL = 'https://localhost:44390/api/';
 const USERS = 'Users';
+const CLASSES = 'Classes';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService implements OnInit {
   loginTeacher!: User;
+  teachersClass!: Class;
   isLoggedIn: boolean = false;
 
   loggedInSubject = new Subject<boolean>();
@@ -36,16 +38,19 @@ export class AuthService implements OnInit {
       .subscribe(
         (res) => {
           if (res) {
-            this.http
-              .get<User>(BACKEND_URL + USERS + '/' + userName)
-              .subscribe((res) => {
+            this.http.get<User>(BACKEND_URL + USERS + '/' + userName).subscribe((res) => {
                 this.loginTeacher = res;
                 localStorage.setItem('TeacherId', userName);
                 localStorage.setItem('TeacherPassword', password);
-                this.toastr.success(
-                  this.loginTeacher.displayName + ' ברוך הבא'
-                );
+                localStorage.setItem('TeachersClass', res.class);
+
+                this.toastr.success(this.loginTeacher.displayName + ' ברוך הבא');
                 this.updateLoggedInState(true);
+
+                this.http.get<Class>(BACKEND_URL + CLASSES + '/' + res.class).subscribe((classRes) => {
+                  this.teachersClass = classRes;
+                  console.log(classRes)
+                });
               });
             return true;
           }

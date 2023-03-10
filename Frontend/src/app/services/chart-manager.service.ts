@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+export enum DatePart{
+  day,
+  month,
+  year
+}
+
 @Injectable({
   providedIn: 'root'
 })
-
 export class ChartManagerService {
-
+  historyData: number[][] = [];
   stockNameToShowSubscription: BehaviorSubject<string>;
   
   constructor() { 
@@ -23,5 +28,12 @@ export class ChartManagerService {
   getClasscurrencyHistory(classId: string)
   {
   }
+
+  getDatePartNumberByDateString(date: string, part: DatePart)
+  {
+    return date.split('.')[part]; 
+  }
+
+
 
 }

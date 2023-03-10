@@ -33,10 +33,12 @@ import { EditProductDialogComponent } from './components/admin/edit-product-dial
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 import { environment } from 'src/environments/environment';
 import { ClassComponent } from './components/class/class.component';
 import { HistoryComponent } from './components/class/history/history.component';
+import { ClassCurrencyUpdateBottomSheetComponent } from './components/class/class-currency-update-bottom-sheet/class-currency-update-bottom-sheet.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -67,6 +69,7 @@ const appRoutes: Routes = [
     EditProductDialogComponent,
     ClassComponent,
     HistoryComponent,
+    ClassCurrencyUpdateBottomSheetComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +81,7 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatDialogModule,
     MatCardModule,
+    MatBottomSheetModule,
     MatTabsModule,
     NgbToastModule,
     AppRoutingModule,

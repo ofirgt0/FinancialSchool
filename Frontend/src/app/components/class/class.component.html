@@ -1,34 +1,82 @@
-<div class="container">
-   <div class="row">
-      <div class="col-md-12">
-         <div id="content" class="content content-full-width">
-            
-            <div class="profile">
-               <div class="profile-header">
-                  <div class="profile-header-cover"></div>
-                  <div class="profile-header-content telegramColor">
-                    <img src="assets/deallerAvatar/Amit.png" class="shadow rounded-circle profilePic center" width="10%">
-                     <div class="profile-header-info">
-                        <h4 class="m-t-10 m-b-5 center" >{{ chosenClass.displayName }} | {{ chosenClass.teacherId }}</h4>
-                        <p class="m-b-10 center" style="font-size: 200%;">{{ chosenClass.totalCash }} כשף</p>
-                     </div>
-                  </div>
-                  <ul class="profile-header-tab nav nav-tabs">
-                     <li class="nav-item"><a class=" active show" data-toggle="tab">Purchase History</a></li>
-                     <li class="nav-item"><a class="show pointer" data-toggle="tab">Holdings</a></li>
-                  </ul>
-               </div>
-            </div>
+<link rel="stylesheet" href="https://kit.fontawesome.com/f93f7c82a9.css" crossorigin="anonymous">
 
-            <div class="profile-content">
-               <!-- <div class="tab-content p-0" *ngIf="historyView">
-                  <app-deals-view></app-deals-view>
-               </div>
-               <div class="tab-content p-0" *ngIf="!historyView">
-                  <app-holdings-view></app-holdings-view>
-               </div> -->
-            </div>
-         </div>
+<div class="header">
+   <div class="menu">
+
+      <div class="flex1-item centered pointer" >
+        <img src="../../../assets/img/home.png" routerLink="/" width="35px">
+      </div>
+      <div class="flex5-item left-border padding" >
+        <a style="font-family: 'header'; color: rgb(209, 209, 209); font-size: 300%;">הבנק החברתי - </a>
+        <a style="font-family: 'sub-title'; color: rgb(209, 209, 209); font-size: 220%;">{{ chosenClass.displayName }}</a>
+      </div>
+      
+      <div class="flex5-item left-border centered padding">
+        <a style="justify-content:center; font-family: 'sub-title'; color: rgb(209, 209, 209); font-size: 220%;">יעד כיתתי: רכיש הפסקה פעילה</a>
+      </div>
+      <div class="flex5-item centered padding">
+        <a style="justify-content:center; font-family: 'sub-title'; color: rgb(209, 209, 209); font-size: 220%;">מחנכת הכיתה: חני נחמני</a>
+      </div>
+      <div class="flex1-item centered pointer" (click)="openBottomSheet()">
+        <img src="../../../assets/img/give-money.png" width="35px">
       </div>
    </div>
+  <!-- <div class="center">
+  </div> -->
+  <!-- <img src="assets/deallerAvatar/Amit.png" class="shadow rounded-circle profilePic center" width="10%"> -->
+  <!-- <p class="m-b-10 center" style="font-size: 200%;" dir="rtl"> {{ chosenClass.totalCash }} כשף</p> -->
+</div>
+
+<div class="flex-container gray-body" >
+  <div class="flex-item flex3-item">
+    <!-- <div class="flex-container first-cube-row"> -->
+      <!-- <div class="flex-header-item redItem colored-box-container">
+        <img
+          class="img-left"
+          src="../../../assets/img/loss.png"
+          alt="Your Image"
+        />
+        <p class="text-right">הוצאות</p>
+      </div>
+      <div class="flex-header-item greenItem colored-box-container">
+        <img
+          class="img-left"
+          src="../../../assets/img/profit.png"
+          alt="Your Image"
+        />
+        <p class="text-right">הכנסות</p>
+      </div>
+      <div class="flex-header-item colored-box-container">
+        <img
+          class="img-left"
+          src="../../../assets/img/loss.png"
+          alt="Your Image"
+        />
+        <p class="text-right">מאזן נוכחי</p>
+      </div>
+    </div> -->
+    <div class="top" id="divChart">
+      <p class="dashboard-data-title">פירוט שינויים יומיים בחשבון לפי חודשים</p>
+      <canvas id="{{ this.chosenClass.id }}" height="250%" ></canvas>
+    </div>
+    <br>
+    <div class="bottom">
+      <p class="dashboard-data-title">פירוט הכנסות והוצאות לשנת הלימודים הנוכחית</p>
+      <canvas id="barChart" height="250%"></canvas>
+    </div>
+  </div>
+  <div class="flex-item">
+    <div class="column-container">
+      <div class="top">
+        <p class="dashboard-data-title" style="background-color: white;">פירוט תנועות בחשבון</p>
+        <app-history style="height: 300px; overflow: auto;"></app-history>
+       
+      </div>
+      <div class="bottom">
+        <div class="center" style="width:70%; align-items: center; text-align: center; margin: auto;">
+          <canvas id="doughnutChart" ></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
